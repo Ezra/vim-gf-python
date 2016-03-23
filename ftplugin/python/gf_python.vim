@@ -75,9 +75,18 @@ def gf_python_find_module(module, path=None):
 
 def python_goto_file():
     cw = vim.eval('expand("<cfile>")')
+    buf_pwd = os.path.split(vim.eval('expand("%")'))[0]
+    if buf_pwd.startswith('/')
+        path = buf_pwd
+    else:
+        vim_pwd = vim.eval('expand("$PWD")')
+        path = os.path.join(vim_pwd, buf_pwd)
     module = re.sub('\.', '/', cw)
     try:
-        filename = gf_python_find_module(module)
+        if cw.startswith('.'):
+            filename = gf_python_find_module(module, path)
+        else:
+            filename = gf_python_find_module(module)
     except:
         print >> sys.stderr, 'E447: Can\'t find module "%s"' % module
     else:
