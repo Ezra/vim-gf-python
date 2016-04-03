@@ -76,7 +76,7 @@ def gf_python_find_module(module, path=None):
 def python_goto_file():
     cw = vim.eval('expand("<cfile>")')
     buf_pwd = os.path.split(vim.eval('expand("%")'))[0]
-    if buf_pwd.startswith('/')
+    if buf_pwd.startswith('/'):
         path = buf_pwd
     else:
         vim_pwd = vim.eval('expand("$PWD")')
